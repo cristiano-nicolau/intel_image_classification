@@ -1,0 +1,129 @@
+\section{Comparison with State-of-the-Art Methods}
+
+To evaluate the performance of our models in the context of state-of-the-art solutions, we compared our results to several notable studies and Kaggle notebooks that utilized the Intel Image Classification dataset. These works employ a diverse range of techniques, from traditional machine learning to advanced deep learning models, allowing us to position our findings within the current research landscape.
+
+\begin{enumerate}
+    \item Image Classification Using Modified Convolutional Neural Network: 
+In the study \textit{Image Classification Using Modified Convolutional Neural Network} \cite{khan2024image}, the authors employed CNNs to classify images in the Intel Image Classification dataset. Their architecture utilized convolutional layers to extract basic features (e.g., edges and corners), followed by fully connected layers to capture more complex patterns. The model achieved solid performance with a Softmax function for multiclass classification. Additionally, K-Nearest Neighbors (KNN) was employed using a "Bag-Of-Features" approach for feature extraction, with 80 of the top features retained per category. This hybrid approach provides an interesting comparison to our own, particularly in terms of how the models handle feature extraction.
+ 
+    
+    \item Kaggle Notebook Using a Custom CNN Architecture: 
+In a separate Kaggle notebook \cite{kaggle2024intel}, the author developed a custom CNN with three convolutional layers followed by max pooling and dense layers. This design was simple yet effective, aimed at extracting hierarchical features to classify the six categories in the dataset. The performance of this model offers a baseline against which we can compare our results, especially regarding its ability to capture spatial relationships and distinguish between the classes.
+
+
+    \item Kaggle Notebook Using DenseNet:
+A third Kaggle notebook utilized the DenseNet architecture \cite{kaggle2023densenet}, a more advanced deep learning model known for its efficiency in capturing complex patterns through its dense connectivity between layers. This structure promotes feature reuse and enhances gradient flow, making it well-suited for tasks requiring the extraction of intricate features from images. DenseNet's performance, especially with deep and dense architectures, offers a high bar for comparison, particularly in tasks where feature complexity and high-level abstractions are key to classification accuracy.
+\end{enumerate}
+
+After reviewing these state-of-the-art models, we performed a comparison of our results with those obtained from the studies mentioned above. The following tables summarize the performance of our models and those from the literature, focusing on accuracy metric.
+
+\begin{table}[H]
+    \centering
+    \caption{Our Models Results} 
+    \begin{tabular}{||c|c|c|c|c||} 
+     \hline    
+     \textbf{Model} & \textbf{Accuracy} & \textbf{F1 Score} & \textbf{Recall} & \textbf{Precision} \\
+     \hline \hline
+     CM & 0.834 & 0.834 & 0.834 & 0.835 \\
+     \hline
+    CNN - Hyper & 0.875 & 0.875 & 0.875 & 0.879 \\
+     \hline
+     DN & 0.900 & 0.900 & 0.901 & 0.901 \\
+     \hline 
+
+\hline
+     \multicolumn{5}{||c||}{\textbf{Models Name}} \\
+     \hline
+     CM & \multicolumn{4}{|l||}{CNN Class Model} \\ 
+     \hline
+    CNN - Hyper & \multicolumn{4}{|l||}{Best Hyper Tunned CNN} \\ 
+     \hline
+     DN & \multicolumn{4}{|l||}{DenseNet Model} \\ 
+\hline
+
+    \end{tabular}
+    \label{tab:tab_Final}
+\end{table}
+
+
+\begin{table}[H]
+    \centering
+    \caption{Custom CNN Architecture Kaggle notebook\cite{kaggle2024intel}} 
+    \begin{tabular}{||c|c|c|c||} 
+     \hline    
+     \textbf{Stage} & \textbf{Accuracy} & \textbf{Loss} \\
+     \hline \hline
+     Training (Step 1) & 0.9453 & 0.1933  \\
+     \hline
+     Training (Step 2) & 0.9186 & 0.2581 \\
+     \hline
+     Testing & 0.8314 & 0.4845 \\
+     \hline
+    \end{tabular}
+    \label{tab:model_evaluation}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \caption{DenseNet Kaggle notebook\cite{kaggle2023densenet}}
+    \begin{tabular}{||c|c|c|c||} 
+     \hline    
+     \textbf{Stage} & \textbf{Accuracy} & \textbf{Loss} \\
+     \hline \hline
+     Training  & 0.9117 & 0.2459  \\
+     \hline
+     Validation & 0.8820 & 0.3308\\
+     \hline
+     Testing & 0.8887 & 0.3084  \\
+
+     \hline
+    \end{tabular}
+    \label{tab:model_evaluation_epoch17}
+\end{table}
+
+
+\begin{table}[H]
+    \centering
+    \caption{\textit{Image Classification Using Modified Convolutional Neural Network} \cite{khan2024image}} 
+    \begin{tabular}{||c|c|c|c|c||} 
+     \hline    
+     \textbf{Method} & \textbf{KNN} & \textbf{Best CNN}  \\
+     \hline \hline
+     \textbf{Accuracy} & 85.3704 & 93.61 \\
+     \hline
+    \end{tabular}
+    \label{tab:classification_comparison}
+\end{table}
+
+
+
+\textbf{Our Models Results (Table \ref{tab:tab_Final}):}
+\begin{itemize}
+    \item CNN Class Model (CM): Achieved an accuracy of 83.4, with balanced F1 score, recall, and precision metrics, making it a competitive baseline.
+    \item Hyper-Tuned CNN (CNN-Hyper): Improved upon the CM by achieving an accuracy of 87.5, reflecting the benefits of hyperparameter tuning in optimizing the CNN's architecture.
+    \item DenseNet (DN): Demonstrated the highest performance among our models, with 90 accuracy and similarly high F1 score, recall, and precision. DenseNet's dense connectivity allows for better gradient flow and feature reuse, making it superior in handling complex image datasets.
+\end{itemize}
+
+\textbf{Custom CNN Architecture Kaggle Notebook (Table \ref{tab:model_evaluation}):}
+\begin{itemize}
+    \item The custom CNN architecture achieved a testing accuracy of 83.14, slightly below our hyper-tuned CNN and DenseNet models. While the training accuracy was very high (94.53), the significant drop during testing indicates overfitting.
+\end{itemize}
+
+\textbf{DenseNet Kaggle Notebook (Table \ref{tab:model_evaluation_epoch17}):}
+\begin{itemize}
+    \item The DenseNet implementation achieved a testing accuracy of 88.87, closely aligning with the performance of our DenseNet model. Its robust performance during training (91.17) and validation (88.2) stages highlights DenseNet's generalization capabilities.
+\end{itemize}
+    
+\textbf{Image Classification Using Modified CNN (Table \ref{tab:classification_comparison}):}
+\begin{itemize}
+    \item The study reported 85.37 accuracy using KNN and 93.61 accuracy with their best CNN implementation. Their CNN model outperformed our DenseNet implementation by a small margin, likely due to architectural optimizations or additional dataset augmentations.
+\end{itemize}
+
+
+Among our models, DenseNet achieved the highest accuracy (90), outperforming both the CNN Class Model (83.4) and the hyperparameter-tuned CNN (87.5). This demonstrates that deeper architectures with enhanced connectivity are more effective at extracting complex features from the Intel Image Classification dataset. The DenseNet implementation from the Kaggle notebook also showed strong performance, with a testing accuracy of 88.87, though it fell slightly short of our DenseNet model. This reinforces DenseNet's capability as a robust architecture for image classification tasks.
+
+Our hyperparameter-tuned CNN struck a balance between simplicity and performance, achieving 87.5 accuracy without the computational complexity of DenseNet, making it suitable for resource-constrained scenarios. However, the custom CNN architecture from the Kaggle notebook, despite achieving high training accuracy (94.53), exhibited a significant drop in testing accuracy (83.14), suggesting overfitting and highlighting the challenges simpler architectures face in generalizing on more complex datasets.
+
+Both our DenseNet model and the DenseNet implementation from the Kaggle notebook consistently outperformed traditional CNN architectures and KNN-based methods, emphasizing DenseNet’s strength in leveraging dense connectivity for feature reuse and improved gradient flow. This superiority was further evidenced in the study \textit{Image Classification Using Modified Convolutional Neural Network}, where KNN achieved 85.37 accuracy, competitive with simpler CNNs but significantly lower than DenseNet. Their best CNN implementation reached 93.61 accuracy, underscoring the importance of carefully designed CNN architectures for achieving state-of-the-art results.
+
+In summary, our DenseNet implementation demonstrated robust generalization and closely aligned with state-of-the-art approaches, validating its effectiveness. The hyper-tuned CNN, while simpler, offers a practical alternative for scenarios with limited resources, achieving competitive performance without the complexity of DenseNet.

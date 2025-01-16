@@ -1,0 +1,62 @@
+\section{Introduction}
+\label{sec:Introduction}
+Scene image classification is an increasingly vital domain within computer vision, underpinning a wide range of applications such as medical diagnostics, autonomous navigation, environmental monitoring, digital content recommendation, and tourism planning. Unlike basic image classification, which typically focuses on identifying individual objects within an image, scene classification involves analyzing complex and diverse visual environments, making it a more challenging yet impactful task.
+
+This paper aims at two key objectives. First, it provides a comprehensive review of the latest advances in scene image classification, critically analyzing, and comparing other studies in the field. Second, it develops, optimizes, and evaluates distinct Feed-Forward Neural Networks (FNNs), and Convolutional Neural Network (CNN) architectures using the Intel Image Classification dataset. This dataset comprises a diverse collection of natural scene images from various global locations, posing a challenging multi-class classification problem.
+
+Our study highlights the effectiveness of different machine learning approaches in accurately classifying images into categories such as buildings, forests, glaciers, mountains, seas, and streets. The paper concludes with a detailed comparative analysis of the model performance and offers key insights derived from the experiments, contributing to the ongoing development of robust and scalable scene classification systems.
+
+\section{State of the Art} \label{sec}
+
+A comprehensive state-of-the-art review was performed to find the most suitable models for application to this dataset and identify the types of studies that had already been conducted.
+
+\subsection{Traditional Machine Learning Approaches}
+
+Before the advent of neural networks, traditional machine learning algorithms dominated image classification tasks. Methods such as Support Vector Machines (SVMs) and Random Forests were widely used. For example, \cite{svm_example} demonstrated the effectiveness of SVMs in high-dimensional spaces, while \cite{rf_example} highlighted the robustness of Random Forests against overfitting in various applications.
+
+Despite their impact, these approaches required manual feature extraction, which was not only labor intensive but also often incapable of capturing intricate patterns in visual data. This limited their ability to handle complex or large-scale datasets, paving the way for deep learning-based solutions.
+
+\subsection{Feedforward Neural Networks (FNNs)}
+
+Feedforward neural networks (FNNs) were among the first models to be applied to image classification problems. Despite their structural simplicity and the ability to solve basic tasks, FNNs lack specific mechanisms to capture the spatial relationships between image pixels, limiting their performance in more complex tasks. However, they served as an important starting point for exploring more sophisticated networks.
+
+\subsection{Convolutional Neural Networks (CNNs)}
+
+The introduction of Convolutional Neural Networks (CNNs) revolutionized the field of image classification by eliminating the need for manual feature extraction. CNNs automatically learn hierarchical representations of images, starting from simple features like edges to complex patterns.
+
+AlexNet \cite{alexnet} was a milestone in this advancement, winning the ImageNet Large Scale Visual Recognition Challenge (ILSVRC) in 2012 and demonstrating the potential of deep networks in visual recognition. Later, VGGNet \cite{vgnet} introduced a deeper architecture with smaller convolutional filters and a consistent structure, becoming a reference for many image classification tasks due to its simplicity and effectiveness.
+
+\subsection{Advanced CNN Architectures}
+
+More recent advancements focused on overcoming the limitations of early CNNs, such as vanishing gradient problems in very deep networks. ResNet \cite{resnet} introduced residual connections, enabling very deep networks to be trained efficiently and achieve superior performance in image classification tasks.
+
+Another significant innovation came with DenseNet \cite{densenet}, which established dense connections between all layers, promoting feature reuse and alleviating gradient issues. This approach not only increased computational efficiency but also demonstrated excellent performance in complex classification tasks, such as scene classification, due to its ability to capture intricate patterns and details.
+
+\subsection{Data Augmentation and Regularization}
+
+Data augmentation and regularization are crucial to improving the generalization of deep learning models.
+
+Data Augmentation includes techniques such as random cropping, flipping, and color jittering, which increase the diversity of the dataset, helping the model to learn more robust representations.
+
+Regularization is essential to prevent overfitting. Dropout is a common technique that randomly disables units during training, forcing the model not to rely excessively on specific features and promoting generalization.
+
+\subsection{Examples of Notebooks That Used The Same Dataset}
+
+For a more detailed comparison, we identified notebooks on Kaggle and other studies that used the Intel Image Classification dataset. These examples demonstrate the diversity of applied approaches, ranging from traditional machine learning techniques to state-of-the-art deep learning models.
+
+We particularly highlight notebooks that used Convolutional Neural Networks (CNNs) with different hyperparameter configurations, Feedforward Neural Networks (FNNs) and the advanced DenseNet architecture. Analyzing these methods allowed for a direct comparison with our implementations, emphasizing the impact of hyperparameter choices and architectures on model performance.
+
+\subsubsection{Image Classification using modified Convolutional Neural Network}
+
+In the study \textit{Image Classification using Modified Convolutional Neural Network} \cite{khan2024image}, the main objective was to apply Convolutional Neural Networks (CNNs) for image recognition and classification. The Intel Image Classification dataset was split into training and testing sets, with pre-processing performed on the images. The processed images were then used to train the CNN model. The CNN architecture consisted of several convolutional layers to extract features such as edges and corners, followed by fully connected layers to learn more complex patterns. The final classification was performed using a Softmax activation function for multiclass classification.
+
+Additionally, the KNN technique was applied for image classification, utilizing the creation of a "Bag-Of-Features" to extract features from 540 images, with 80\% of the best features from each category being retained. The model was then trained to classify the six categories (buildings, forests, glaciers, mountains, seas, and streets) and evaluated on a test set.
+
+\subsubsection{Kaggle notebook using modified Convolutional Neural Network}
+
+Additionally, as part of the comparison, we used a Kaggle notebook where the author developed a custom CNN to classify the images in the Intel Image Classification dataset \cite{kaggle2024intel}. The proposed architecture consists of three convolutional layers, followed by max pooling layers, and culminates in dense layers for the final classification. This structure was designed to extract hierarchical features from the images, enabling the distinction of the six categories present in the dataset. The approach follows a relatively simple yet effective architecture, utilizing basic convolution and pooling operations before performing multiclass classification.
+
+
+\subsubsection{Kaggle Notebook Using DenseNet}
+
+Additionally, as part of the comparison, we used a Kaggle notebook where the author employed DenseNet to classify the images in the Intel Image Classification dataset \cite{kaggle2023densenet}. The architecture leverages the DenseNet framework, which connects each layer to every other layer in a feed-forward fashion, facilitating feature reuse and improving gradient flow during training. This architecture was designed to efficiently capture intricate patterns in the images, enabling the classification of the six categories present in the dataset. DenseNet's deep and dense connectivity allows for enhanced performance, especially in capturing complex features compared to simpler CNN architectures.
